@@ -1,9 +1,23 @@
 #!/bin/bash
 
 if [ -z "$1" ]
-	then
-		echo "project name is missing"
-		exit
+        then
+                echo "project name is missing"
+                exit
+fi
+
+. settings.config
+
+if [ -z ${repoDir+x} ]
+        then
+                echo "what's the directory you want to make the repo directory in?. set this in settings.config to save for future use."
+                read repoDir
+fi
+
+if [ -z ${templateUrl+x} ]
+        then
+                echo "what's the template url?. set this in settings.config to save for future use."
+                read templateUrl
 fi
 
 . settings.config
