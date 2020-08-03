@@ -1,0 +1,18 @@
+#!/bin/bash
+
+if [ -z "$1" ]
+	then
+		echo "project name is missing"
+		exit
+fi
+
+. settings.config
+echo $repoDir
+cd $repoDir
+git clone $templateUrl $1
+cd $1
+git remote remove origin
+gh repo create
+git push -u origin master
+npm i
+npm run dev
